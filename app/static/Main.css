@@ -663,7 +663,7 @@
 }
 
 .u-section-6 .u-text-4 {
-  margin: -72px 794px 60px 28px;
+  margin: -72px 767px 60px 56px;
 }
 
 @media (max-width: 1199px) {
@@ -2298,4 +2298,38 @@
     margin-left: initial;
     width: auto;
   }
+}.u-section-9 {
+  min-height: 524px;
+  background-image: url("images/AI_Team_Pic.png");
+  background-position: 50% 46.48%;
+}
+
+@media (max-width: 1199px) {
+  .u-section-9 {
+    min-height: 432px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-9 {
+    min-height: 331px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-9 {
+    min-height: 248px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-9 {
+    min-height: 156px;
+  }
+}.u-section-10 .u-sheet-1 {
+  min-height: 101px;
+}
+
+.u-section-10 .u-text-1 {
+  margin: 30px auto 51px;
 }
