@@ -37,33 +37,33 @@ Coding center code - comment out the following 4 lines of code when ready for pr
 
 # setup the webserver
 # port may need to be changed if there are multiple flask servers running on same server
-port = 36280
-base_url = get_base_url(port)
-app = Flask(__name__, static_url_path=base_url+'static')
+port = 12345
+# base_url = get_base_url(port)
+# app = Flask(__name__, static_url_path=base_url+'static')
 
 '''
 Deployment code - uncomment the following line of code when ready for production
 '''
-#app = Flask(__name__)
+app = Flask(__name__)
 
-#@app.route('/')
-@app.route(base_url)
+@app.route('/')
+# @app.route(base_url)
 def home():
     return render_template('Main.html', generated=None)
 
-#@app.route('/', methods=['POST'])
-@app.route(base_url, methods=['POST'])
+@app.route('/', methods=['POST'])
+# @app.route(base_url, methods=['POST'])
 def home_post():
     return redirect(url_for('results'))
 
-#@app.route('/results')
-@app.route(base_url + '/results')
+@app.route('/results')
+# @app.route(base_url + '/results')
 def results():
     return render_template('Main.html', generated=None)
 
 
-#@app.route('/generate_text', methods=["POST"])
-@app.route(base_url + '/generate_text', methods=["POST"])
+@app.route('/generate_text', methods=["POST"])
+# @app.route(base_url + '/generate_text', methods=["POST"])
 def generate_text():
     """
     view function that will return json response for generated text. 
