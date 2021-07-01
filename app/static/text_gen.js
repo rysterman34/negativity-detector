@@ -22,8 +22,14 @@ $(document).ready(function() {
                 console.log(data);
                 var list_html = "";
                 var probability = data['Probability'];
+                if (probability <= 0.5) {
+                  var statement = "The model detects nonnegative sentiment"
+                }
+                else {
+                  var statement = "The model detects negative sentiment"
+                }
                 var label = data['Label']
-                list_html += "<p id='sentiment_probability'> According to the model, there is a " + probability + " chance that the message's sentiment is negative </p>"
+                list_html += "<p id='sentiment_probability'>" + statement + "</p>"
                 $("#generated_result").html(list_html);
 
 

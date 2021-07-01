@@ -6,7 +6,7 @@
     <meta name="keywords" content="AI Text Emotion Detector, Our Motivation, Try It Out Yourself!, Demo, Applications, Understanding Text, Mental Health, Company Assistance, Examples, Our Project Timeline, Our Team">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Main</title>
+    <title>AI Text Emotion Detector</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ url_for('static', filename='Main.css') }}" media="screen">
     <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}" defer=""></script>
@@ -178,9 +178,9 @@
         <img class="u-image u-image-default u-image-1" src="{{ url_for('static', filename='images/twitter_phone.png') }}" alt="" data-image-width="318" data-image-height="610">
         <img class="u-image u-image-default u-image-2" src="{{ url_for('static', filename='images/insta_phone.png') }}" alt="" data-image-width="320" data-image-height="620">
         <img class="u-image u-image-default u-image-3" src="{{ url_for('static', filename='images/message_phone.png') }}" alt="" data-image-width="380" data-image-height="614">
-        <h3 class="u-align-center u-text u-text-2">This message is positive. (82% sure)</h3>
-        <h3 class="u-align-center u-text u-text-3">This message is negative. (90% sure)</h3>
-        <h3 class="u-align-center u-text u-text-4">This message is neutral. (78% sure)</h3>
+        <h3 class="u-align-center u-text u-text-2">This message is nonnegative.</h3>
+        <h3 class="u-align-center u-text u-text-3">This message is negative.</h3>
+        <h3 class="u-align-center u-text u-text-4">This message is nonnegative.</h3>
       </div>
     </section>
     <section class="u-clearfix u-section-7" id="sec-12cd">
@@ -190,8 +190,12 @@
         <div class="u-expanded-width-xs u-palette-1-dark-1 u-radius-10 u-shape u-shape-round u-shape-1"></div>
         <h3 class="u-text u-text-default-lg u-text-default-md u-text-default-xl u-text-white u-text-2">Data Collection &amp; Transformation</h3>
         <h6 class="u-align-center u-text u-text-body-alt-color u-text-3">We had to find, vet, and download data sets needed to make our model. To transform it into a useable form, we lemmatized and vectorized the text and removed stop words, grammar, etc.</h6>
-        <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{{ url_for('static', filename='ScreenShot2021-06-29at1.39.06PM.png') }}" alt="" data-image-width="138" data-image-height="238">
+        <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{{ url_for('static', filename='images/ScreenShot2021-06-29at1.39.06PM.png') }}" alt="" data-image-width="138" data-image-height="238">
         <div class="u-expanded-width-sm u-expanded-width-xs u-palette-1-dark-1 u-radius-10 u-shape u-shape-round u-shape-2"></div>
+                <h3 class="u-text u-text-body-alt-color u-text-default u-text-4">Data Cleaning</h3>
+        <h6 class="u-align-center u-text u-text-body-alt-color u-text-5"><b>We grabbed our dataset from kaggle. Our dataset consisted of tweets from twitter, either labeled 1 or 0. 1 indicates a negative or “sad, mad” sentiment. 0 indicates a positive or “happy, neutral” sentiment . After separating the tweets into positive and negative sentiments, we split both of the categories apart and randomly shuffled them. After that we put it back together in a new, random order. We then begin tokenizing the text, while also getting rid of punctuation, lowercasing all text, getting rid of links, ‘@’ symbols, and stemming every word. After that we separated our data into a training set and a test set.<span style="font-weight: 400;"></span></b>
+        </h6>
+        
         <h3 class="u-text u-text-body-alt-color u-text-default u-text-4">Data Cleaning</h3>
         <h6 class="u-align-center u-text u-text-body-alt-color u-text-5"><b>We grabbed our dataset from kaggle. Our dataset consisted of tweets from twitter, either labeled 1 or 0. 1 indicates a negative or “sad, mad” sentiment. 0 indicates a positive or “happy, neutral” sentiment . After separating the tweets into positive and negative sentiments, we split both of the categories apart and randomly shuffled them. After that we put it back together in a new, random order. We then begin tokenizing the text, while also getting rid of punctuation, lowercasing all text, getting rid of links, ‘@’ symbols, and stemming every word. After that we separated our data into a training set and a test set.<span style="font-weight: 400;"></span></b>
         </h6>
@@ -223,7 +227,7 @@
           <div class="u-repeater u-repeater-1">
             <div class="u-container-style u-list-item u-repeater-item u-white u-list-item-1">
               <div class="u-container-layout u-similar-container u-valign-bottom-md u-container-layout-1">
-                <img alt="" class="u-image u-image-default u-image-1" data-image-width="536" data-image-height="916" src="{{ url_for('static', filename='ScreenShot2021-06-29at1.33.37PM.png') }}">
+                <img alt="" class="u-image u-image-default u-image-1" data-image-width="536" data-image-height="916" src="{{ url_for('static', filename='images/ryan_ai.png') }}">
                 <div class="u-align-center u-container-style u-group u-white u-group-1">
                   <div class="u-container-layout u-container-layout-2">
                     <h4 class="u-text u-text-2">Ryan Papetti</h4>
