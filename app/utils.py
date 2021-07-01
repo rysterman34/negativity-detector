@@ -14,6 +14,7 @@ stemmer = PorterStemmer()
 import numpy as np
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
+import seaborn as sns, matpolotlib.pyplot as plt
 
 
 ## TO DO 
@@ -102,3 +103,13 @@ def predict_text(text):
     probability = model.predict(padded_seq)
     label = int(probability.round().item())
     return probability,label
+
+
+
+
+cm = confusion_matrix(y_test_INDIE,TEST_results)
+f1_score = f1_score(y_test_INDIE,TEST_results)
+tn, fp, fn, tp = (15,10,2,23)
+fig,ax = plt.subplots()
+sns.heatmap(cm,ax=ax, annot=True, cmap="Blues")
+print(fn)

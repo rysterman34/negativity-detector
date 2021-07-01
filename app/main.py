@@ -20,8 +20,8 @@ from flask import send_from_directory
 from flask import jsonify
 from utils import get_base_url, allowed_file, and_syntax
 from utils import clean_text, remove_stop_words, remove_hashtags_atSigns_links, cleanup, lemmatizeText, predict_text
-from sklearn.metrics import confusion_matrix,f1_score
-import seaborn as sns, matplotlib.pyplot as plt
+# from sklearn.metrics import confusion_matrix,f1_score
+# import seaborn as sns, matplotlib.pyplot as plt
 # import stuff for our models
 import pickle
 
