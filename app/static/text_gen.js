@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     $('#text_gen_button').click(function() {
         console.log('text gen button is clicked');
-        var prompt = $('#text_gen_input').val();
+        var prompt = $('#prompt').val();
         console.log('text gen input value is');
         console.log(prompt);
         var url = 'generate_text'
@@ -21,10 +21,11 @@ $(document).ready(function() {
             function(data) {
                 console.log(data);
                 var list_html = "";
-                for (var t = 0; t < data['generated_ls'].length; t++) {
-                    list_html += "<li id='generated_item_" + t + "'>" + data['generated_ls'][t] + "</li>";
-                    $("#generated_ul").html(list_html);
-                }
+                var probability = data['Probability'];
+                var label = data['Label']
+                list_html += "<p id='sentiment_probability'> According to the model, there is a " + probability + " chance that the message's sentiment is negative </p>"
+                $("#generated_result").html(list_html);
+
 
                 $("#loading").hide();
             }

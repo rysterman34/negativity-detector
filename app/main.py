@@ -19,21 +19,25 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 from flask import send_from_directory
 from flask import jsonify
 from utils import get_base_url, allowed_file, and_syntax
-
+from utils import clean_text, remove_stop_words, remove_hashtags_atSigns_links, cleanup, lemmatizeText, predict_text
+from sklearn.metrics import confusion_matrix,f1_score
+import seaborn as sns, matplotlib.pyplot as plt
 # import stuff for our models
-import torch
-from aitextgen import aitextgen
+import pickle
+
+# from aitextgen import aitextgen
 
 '''
 Coding center code - comment out the following 4 lines of code when ready for production
 '''
 # load up the model into memory
 # you will need to have all your trained model in the app/ directory.
-ai = aitextgen(to_gpu=False, model=r"EleutherAI/gpt-neo-125M")
+
+
 
 # setup the webserver
 # port may need to be changed if there are multiple flask servers running on same server
-port = 12345
+port = 36280
 base_url = get_base_url(port)
 app = Flask(__name__, static_url_path=base_url+'static')
 
@@ -45,7 +49,7 @@ Deployment code - uncomment the following line of code when ready for production
 #@app.route('/')
 @app.route(base_url)
 def home():
-    return render_template('writer_home.html', generated=None)
+    return render_template('Main.html', generated=None)
 
 #@app.route('/', methods=['POST'])
 @app.route(base_url, methods=['POST'])
@@ -55,7 +59,8 @@ def home_post():
 #@app.route('/results')
 @app.route(base_url + '/results')
 def results():
-    return render_template('Write-your-story-with-AI.html', generated=None)
+    return render_template('Main.html', generated=None)
+
 
 #@app.route('/generate_text', methods=["POST"])
 @app.route(base_url + '/generate_text', methods=["POST"])
@@ -66,28 +71,25 @@ def generate_text():
 
     prompt = request.form['prompt']
     if prompt is not None:
-        generated = ai.generate(
-            n=3,
-            batch_size=3,
-            prompt=str(prompt),
-            max_length=50,
-            temperature=0.9,
-            return_as_list=True
-        )
+        # Predict data through model
+        negative_prob,class_prediction = predict_text(prompt)
+        
+        # make a dictionary mapping the results to relevant names
+        results = {"prompt":prompt, 'Probability':str(negative_prob[0][0]), 'Label':class_prediction}
+        print(results)
+        
 
-    data = {'generated_ls': generated}
-
-    return jsonify(data)
+    return jsonify(results)
 
 if __name__ == "__main__":
     '''
     coding center code
     '''
     # IMPORTANT: change the cocalcx.ai-camp.org to the site where you are editing this file.
-    website_url = 'cocalcx.ai-camp.org'
+    website_url = 'cocalc3.ai-camp.org'
     print(f"Try to open\n\n    https://{website_url}" + base_url + '\n\n')
 
-    app.run(host = '0.0.0.0', port=port, debug=True)
+    app.run(host = '0.0.0.0', port=port, debug=True, use_reloader=False)
     import sys; sys.exit(0)
 
     '''
